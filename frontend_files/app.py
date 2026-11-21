@@ -96,7 +96,8 @@ with batch_tab:
                 batch_data["Predicted_Sales"] = [result[str(index)] for index in batch_data.index]
                 st.success(f"Predicted {len(batch_data)} rows")
                 st.metric("Total forecast revenue", f"{batch_data['Predicted_Sales'].sum():,.2f}")
-                st.dataframe(batch_data)
+                # Show the prediction first so it is visible without scrolling the table sideways
+                st.dataframe(batch_data[["Predicted_Sales", *batch_data.columns.drop("Predicted_Sales")]])
                 st.download_button(
                     "Download predictions as CSV",
                     data=batch_data.to_csv(index=False).encode("utf-8"),
