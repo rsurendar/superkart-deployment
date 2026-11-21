@@ -1,0 +1,4 @@
+# The frontend only collects input and calls the API, so it does not need the ML libraries
+pandas==2.2.2
+requests==2.32.4
+streamlit==1.43.2
